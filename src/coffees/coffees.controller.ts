@@ -36,9 +36,10 @@ export class CoffeesController {
 
   @Get(':id')
   // @HttpCode(HttpStatus.GONE)
-  findOne(@Param('id') id: string) {
+  findOne(@Param('id') id: number) {
+    console.log(typeof id);
     // return `This action return #${id} coffee`;
-    return this.coffeesService.findOne(id);
+    return this.coffeesService.findOne('' + id);
   }
 
   // @Post()
@@ -49,6 +50,7 @@ export class CoffeesController {
 
   @Post()
   create(@Body() createCoffeeDto: CreateCoffeeDto) {
+    console.log(createCoffeeDto instanceof CreateCoffeeDto);
     return this.coffeesService.create(createCoffeeDto);
   }
 
